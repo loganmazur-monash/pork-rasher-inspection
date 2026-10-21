@@ -59,11 +59,13 @@ Run the notebooks in order from the `notebooks/` folder:
 |---|---|
 | `01_explore_data.ipynb` | Class balance, defect types, near-duplicate check of the official split, defect sizes, shortcut check, test-set uncertainty |
 | `02_baselines.ipynb` | "Always FAIL" and colour-histogram + logistic-regression baselines, with grouped cross-validation and 95% confidence intervals |
+| `03_cnn.ipynb` | MobileNetV2 transfer learning at 224 px and 448 px input width: accuracy, training curves, FLOPs and time per photo |
+| `04_comparison.ipynb` | Final comparison of all four models: results table, comparison chart, confusion matrices, cost per photo |
 
 Run the tests from the repository root:
 
 ```bash
-pytest
+python -m pytest
 ```
 
 ## AI use
