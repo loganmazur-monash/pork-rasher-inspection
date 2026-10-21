@@ -58,6 +58,7 @@ Run the notebooks in order from the `notebooks/` folder:
 | Notebook | What it does |
 |---|---|
 | `01_explore_data.ipynb` | Class balance, defect types, near-duplicate check of the official split, defect sizes, shortcut check, test-set uncertainty |
+| `02_baselines.ipynb` | "Always FAIL" and colour-histogram + logistic-regression baselines, with grouped cross-validation and 95% confidence intervals |
 
 Run the tests from the repository root:
 

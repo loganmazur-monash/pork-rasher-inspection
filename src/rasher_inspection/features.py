@@ -3,7 +3,7 @@
 These are simple, explainable numbers computed from a photo's pixels.
 ``thumbnail`` is used to look for near-duplicate photos and
 ``meat_fraction`` to check for a shortcut (both in notebook 01);
-colour-histogram features for the baseline model are added in a later step.
+``colour_histogram`` gives the input features of the baseline model (notebook 02).
 """
 
 from __future__ import annotations
@@ -51,6 +51,29 @@ def thumbnail(path: str | Path, size: tuple[int, int] = (48, 36)) -> np.ndarray:
     with Image.open(path) as img:
         grey = np.asarray(img.convert("L").resize(size), dtype=float)
     return ((grey - grey.mean()) / (grey.std() + 1e-6)).ravel()
+
+
+def colour_histogram(path: str | Path, bins: int = 16) -> np.ndarray:
+    """Colour-histogram feature vector used by the baseline model.
+
+    For each HSV channel (hue, saturation, value) the pixel values are sorted
+    into ``bins`` equal-width bins, and each bin holds the *fraction* of
+    pixels that fall into it. The three histograms are joined into one vector.
+    The vector describes which colours appear and how much of each, but not
+    *where* they are in the photo.
+
+    Args:
+        path: JPEG file.
+        bins: Number of bins per channel.
+
+    Returns:
+        1-D array of length ``3 * bins``; each third sums to 1.
+    """
+    hsv = load_hsv(path)
+    return np.concatenate([
+        np.histogram(hsv[..., c], bins=bins, range=(0.0, 1.0))[0] / hsv[..., c].size
+        for c in range(3)
+    ])
 
 
 def meat_fraction(path: str | Path) -> float:

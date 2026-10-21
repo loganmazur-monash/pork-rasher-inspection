@@ -16,7 +16,7 @@ from rasher_inspection.data import (
     one_per_source,
     source_name,
 )
-from rasher_inspection.features import meat_fraction, thumbnail
+from rasher_inspection.features import colour_histogram, meat_fraction, thumbnail
 
 
 def write_fake_split(root, split, boxes_per_photo, copies=1):
@@ -99,3 +99,12 @@ def test_meat_fraction_counts_red_pixels_only(tmp_path):
     img[:20] = (200, 40, 50)                       # top half red "meat"
     Image.fromarray(img).save(tmp_path / "half_red.png")
     assert meat_fraction(tmp_path / "half_red.png") == pytest.approx(0.5, abs=0.05)
+
+
+def test_colour_histogram_shape_and_sums(tmp_path):
+    img = np.zeros((40, 40, 3), dtype=np.uint8)
+    img[:20] = (200, 40, 50)
+    Image.fromarray(img).save(tmp_path / "x.png")
+    h = colour_histogram(tmp_path / "x.png", bins=8)
+    assert h.shape == (24,)
+    np.testing.assert_allclose([h[:8].sum(), h[8:16].sum(), h[16:].sum()], 1.0)
