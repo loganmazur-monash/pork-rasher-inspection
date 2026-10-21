@@ -1,0 +1,22 @@
+# Dataset and large outputs (download separately – see README)
+data/*
+!data/.gitkeep
+models/
+*.pt
+*.pth
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
