@@ -29,7 +29,7 @@ def load_hsv(path: str | Path, downscale: int = 4) -> np.ndarray:
         Float array of shape (height, width, 3) with values in [0, 1].
     """
     with Image.open(path) as img:
-        hsv = img.convert("HSV").reduce(downscale)
+        hsv = img.convert("RGB").convert("HSV").reduce(downscale)  # RGB first: handles greyscale/RGBA too
     return np.asarray(hsv, dtype=float) / 255.0
 
 
