@@ -1,0 +1,37 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.2, pytest-9.1.1, pluggy-1.7.0 -- /Users/loganmazur/Desktop/pork-rasher-inspection/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/loganmazur/Desktop/pork-rasher-inspection
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1, platformdirs-4.13.5
+collecting ... collected 26 items
+
+tests/test_cnn.py::test_input_size_keeps_4_by_3_shape PASSED             [  3%]
+tests/test_cnn.py::test_transform_output_shape[True] PASSED              [  7%]
+tests/test_cnn.py::test_transform_output_shape[False] PASSED             [ 11%]
+tests/test_cnn.py::test_dataset_returns_tensor_and_label PASSED          [ 15%]
+tests/test_cnn.py::test_model_outputs_two_scores_per_photo PASSED        [ 19%]
+tests/test_cnn.py::test_class_weights_balance_the_classes PASSED         [ 23%]
+tests/test_cnn.py::test_flops_grow_with_input_size PASSED                [ 26%]
+tests/test_cnn.py::test_predict_returns_one_prediction_per_photo PASSED  [ 30%]
+tests/test_data.py::test_source_name_removes_roboflow_suffix PASSED      [ 34%]
+tests/test_data.py::test_label_is_fail_only_when_boxes_exist PASSED      [ 38%]
+tests/test_data.py::test_load_split_rejects_unknown_split PASSED         [ 42%]
+tests/test_data.py::test_load_dataset_reads_every_split_and_copy PASSED  [ 46%]
+tests/test_data.py::test_one_per_source_drops_augmented_copies PASSED    [ 50%]
+tests/test_data.py::test_label_counts PASSED                             [ 53%]
+tests/test_data.py::test_nearest_neighbour_distance PASSED               [ 57%]
+tests/test_data.py::test_thumbnail_ignores_brightness_changes PASSED     [ 61%]
+tests/test_data.py::test_meat_fraction_counts_red_pixels_only PASSED     [ 65%]
+tests/test_data.py::test_colour_histogram_shape_and_sums PASSED          [ 69%]
+tests/test_evaluate.py::test_confusion_counts_each_outcome PASSED        [ 73%]
+tests/test_evaluate.py::test_balanced_accuracy_averages_both_classes PASSED [ 76%]
+tests/test_evaluate.py::test_always_fail_has_balanced_accuracy_one_half PASSED [ 80%]
+tests/test_evaluate.py::test_wilson_interval_contains_estimate_and_stays_in_range PASSED [ 84%]
+tests/test_evaluate.py::test_wilson_interval_narrows_with_more_data PASSED [ 88%]
+tests/test_evaluate.py::test_wilson_interval_rejects_bad_input PASSED    [ 92%]
+tests/test_evaluate.py::test_bootstrap_interval_contains_point_estimate PASSED [ 96%]
+tests/test_evaluate.py::test_summarise_reports_all_metrics PASSED        [100%]
+
+============================== 26 passed in 2.83s ==============================
