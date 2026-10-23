@@ -31,7 +31,7 @@ Invalid inputs: an unknown split name raises `ValueError`; a missing annotation 
 
 \* includes loading the JPEG; CNN times are for the network only. Balanced accuracy is used because ~80% of photos are FAIL – a model that always answers FAIL scores 85% plain accuracy.
 
-**Recommended model: CNN at 224 px.** Doubling the resolution needed 3.8× the computation and 2.5× the training time without improving accuracy. Main limitations: small test set (12 PASS photos, wide intervals), one camera and belt, each CNN trained once, and "PASS" means "no defect visible in this photo". Details are in the notebooks and the report.
+**Recommended model: CNN at 224 px.** Doubling the resolution needed 3.8× the computation and 2.5× the training time without improving accuracy. Main limitations: small test set (12 PASS photos, wide intervals), one camera and belt, each CNN trained once, and "PASS" means "no defect visible in this photo". Details are in the notebooks and the project report.
 
 ## Repository structure
 
@@ -48,7 +48,6 @@ pork-rasher-inspection/
 │   ├── evaluate.py         #   metrics and confidence intervals
 │   └── cnn.py              #   MobileNetV2 transfer learning
 ├── tests/                  # pytest tests
-├── AI_USE_LOG.md           # running log of AI assistance
 ├── pyproject.toml          # pytest configuration
 ├── requirements.txt
 └── LICENSE
@@ -107,7 +106,7 @@ python -m pdoc src/rasher_inspection --docformat google -o docs
 
 ## AI use
 
-AI assistance (Claude) is disclosed in [`AI_USE_LOG.md`](AI_USE_LOG.md) and discussed in the project report.
+Use of generative AI (Claude) is declared in Section 8 of the project report.
 
 ## License
 
